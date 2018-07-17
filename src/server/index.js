@@ -2,6 +2,7 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const config = require('config');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const logger = require('./logger');
 const schema = require('./schema');
@@ -12,7 +13,7 @@ const app = express();
 
 app.use(morgan('dev', { stream: logger.stream }));
 
-app.use('/graphql', graphqlHTTP({
+app.use('/graphql', cors(), graphqlHTTP({
   schema,
   graphiql: true,
 }));
