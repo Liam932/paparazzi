@@ -1,6 +1,7 @@
 const { composeWithMongoose } = require('graphql-compose-mongoose');
 const { schemaComposer } = require('graphql-compose');
 const Image = require('./image.model');
+
 const ImageTC = composeWithMongoose(Image);
 
 schemaComposer.rootQuery().addFields({
