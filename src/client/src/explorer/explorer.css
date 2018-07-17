@@ -1,0 +1,38 @@
+.pap-explorer {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.pap-explorer-item {
+    flex: 1 1 300px;
+    overflow: hidden;
+    height: 250px;
+    margin: 15px;
+    border: 1px solid red;
+}
+
+.pap-explorer-item__link {
+    display: block;
+    position: relative;
+    height: 100%;
+}
+
+.pap-explorer-item__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.pap-explorer-item__title {
+    margin: 0;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    text-align: center;
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom';
-import Screenshot  from './screenshot.component';
+import Screenshot  from './screenshot/screenshot.component';
 import Explorer from './explorer.component';
 
 export default class ExplorerRouter extends Component {
