@@ -1,25 +1,21 @@
 const express = require('express');
-const { ApolloServer, gql } = require('apollo-server-express');
+const graphqlHTTP = require('express-graphql');
+const config = require('config');
+const { ApolloServer } = require('apollo-server-express');
+const gql = require('graphql-tag');
 
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
+const schema = require('./schema');
+const { connect } = require('./db');
 
-// Provide resolver functions for your schema fields
-const resolvers = {
-    Query: {
-        hello: () => 'Hello world!',
-    },
-};
-
-const server = new ApolloServer({ typeDefs, resolvers });
+connect()
 
 const app = express();
-server.applyMiddleware({ app });
 
-app.listen({ port: 4000 }, () =>
-    console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`),
-);
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  graphiql: true
+}));
+
+app.listen(config.port, () => {
+    console.log(`🚀 Server ready on port ${config.port} at graphql`);
+});
