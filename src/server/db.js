@@ -6,7 +6,7 @@ const { host, port, name } = config.mongo;
 let db;
 
 async function connect() {
-  logger.log('Connection intialisation');
+  logger.info('Connection intialisation');
   db = await mongoose.connect(`mongodb://${host}:${port}/${name}`, { useNewUrlParser: true });
   mongoose.connection.on('connecting', () => logger.info('MONGO: Connecting to mongo ....'));
   mongoose.connection.on('connected', () => logger.info('MONGO: Connected to mongo'));

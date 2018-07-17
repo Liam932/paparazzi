@@ -6,11 +6,15 @@ const consoleTransport = new winston.transports.Console({
   level: LOG_LEVEL,
   handleExceptions: true,
   prettyPrint: true,
-  colorize: process.stdout.isTTY,
+  colorize: true,
 });
 
 const logger = winston.createLogger({
   level: LOG_LEVEL,
+  format: winston.format.combine(
+    winston.format.colorize(),
+    winston.format.simple(),
+  ),
   transports: [consoleTransport],
 });
 
